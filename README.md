@@ -29,6 +29,9 @@ Coding Task for DevRev Round 2 by Navanit Krish K M. code can be found in the <b
 <h3>Create Vaccination Centres</h3>
 <h3>Admin Login/Logout</h3>
 <br>
+<h2>Root home page:</h2>
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/root-homepage.jpeg?raw=true")>
+<br>
 <h2>Screenshotsof ADMIN UI:</h2>
 <img src="https://github.com/navi1104/DevRev-Task/blob/master/admin-login.jpeg?raw=true")>
 <img src="https://github.com/navi1104/DevRev-Task/blob/master/admin-home.jpeg?raw=true")>
