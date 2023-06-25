@@ -30,7 +30,10 @@ Coding Task for DevRev Round 2 by Navanit Krish K M. code can be found in the <b
 <h3>Admin Login/Logout</h3>
 <br>
 <h2>Screenshotsof ADMIN UI:</h2>
-![Alt text]("https://github.com/navi1104/DevRev-Task/admin-login.jpeg")
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/admin-login.jpeg?raw=true")>
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/admin-home.jpeg?raw=true")>
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/admin-create.jpeg?raw=true")>
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/admin-edit.jpeg?raw=true")>
 <hr>
 <h1>User Use Cases</h1>
 <h3>Fetch Vaccination Centres</h3>
@@ -40,3 +43,7 @@ Coding Task for DevRev Round 2 by Navanit Krish K M. code can be found in the <b
 <h3>USER Login</h3>
 <br>
 <h2>Screenshotsof USER UI:</h2>
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/user-reg.jpeg?raw=true")>
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/user-login.jpeg?raw=true")>
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/user-home.jpeg?raw=true")>
+<img src="https://github.com/navi1104/DevRev-Task/blob/master/user-search.jpeg?raw=true")>
