@@ -60,10 +60,25 @@
     }
 
     .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 8px 16px;
       border: 1px solid #ccc;
       border-radius: 4px;
       font-family: 'Your Font Here', sans-serif;
+      width: 300px; /* Adjust width as needed */
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      padding: 0 10px;
+      font-size: 16px;
+    }
+
+    .search-icon {
+      margin-right: 8px;
     }
 
     .logout-button {
@@ -81,7 +96,10 @@
   <div id="loading" class="loading">Loading vaccination centre details...</div>
 
   <div class="search-container">
-    <input type="text" id="searchBar" class="search-bar" placeholder="Search vaccination centres..." />
+    <div class="search-bar">
+     
+      <input type="text" id="searchBar" class="search-input" placeholder="Search vaccination centres..." />
+    </div>
   </div>
 
   <div id="vaccinationCentres"></div>
@@ -89,38 +107,33 @@
 
   <button id="logoutButton" class="logout-button">Logout</button>
   <script>
-    const accessToken = localStorage.getItem("accessToken");      
+    const accessToken = localStorage.getItem("accessToken");
     const logoutButton = document.getElementById("logoutButton");
-logoutButton.addEventListener("click", async () => {
-  try {
-    const response = await fetch("/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${accessToken}`
-      },
-      credentials: "include"
+    logoutButton.addEventListener("click", async () => {
+      try {
+        const response = await fetch("/logout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+          },
+          credentials: "include"
+        });
+
+        if (response.ok) {
+          // Logout successful, redirect to login page or perform other actions
+          window.location.replace("/user-login"); // Replace with your login page URL
+        } else {
+          // Logout failed, handle error
+          console.error("Logout failed:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Logout failed:", error);
+      }
     });
 
-    if (response.ok) {
-      // Logout successful, redirect to login page or perform other actions
-      window.location.href = "/user-login"; // Replace with your login page URL
-    } else {
-      // Logout failed, handle error
-      console.error("Logout failed:", response.statusText);
-    }
-  } catch (error) {
-    console.error("Logout failed:", error);
-  }
-});
-
-
-
-
-
     // Function to fetch vaccination centre details
-    const fetchVaccinationCentres = () => {
-    
+    const fetchVaccinationCentresData = () => {
       const headers = {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${accessToken}`
@@ -154,11 +167,9 @@ logoutButton.addEventListener("click", async () => {
               bookButton.classList.add("book-button");
 
               // Add event listener to book button
-              bookButton.addEventListener("click", async() => {
+              bookButton.addEventListener("click", async () => {
                 await bookSlot(centre._id);
-                fetchVaccinationCentres();
-                
-                
+                fetchVaccinationCentresData();
               });
 
               card.appendChild(name);
@@ -240,13 +251,37 @@ logoutButton.addEventListener("click", async () => {
     };
 
     // Initial fetch of vaccination centre details
-    fetchVaccinationCentres();
+    fetchVaccinationCentresData();
 
     // Refresh access token every 50 seconds
     setInterval(refreshAccessToken, 50000);
 
     // Fetch vaccination centre details every 5 minutes
-    setInterval(fetchVaccinationCentres, 300000);
+    setInterval(fetchVaccinationCentresData, 300000);
+
+    // Search bar functionality
+    const searchBar = document.getElementById("searchBar");
+    searchBar.addEventListener("keyup", () => {
+      const query = searchBar.value.toLowerCase();
+      const cards = document.getElementsByClassName("card");
+
+      if (query.trim() === "") {
+        // Display all vaccination centre cards
+        for (const card of cards) {
+          card.style.display = "block";
+        }
+      } else {
+        // Filter and display vaccination centre cards matching the search query
+        for (const card of cards) {
+          const name = card.getElementsByTagName("h3")[0].textContent.toLowerCase();
+          if (name.includes(query)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        }
+      }
+    });
   </script>
 </body>
 </html>

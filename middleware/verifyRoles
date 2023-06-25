@@ -1,5 +1,6 @@
 const verifyRoles = (...allowedRoles) => {
   return (req, res, next) => {
+    console.log("Inside Verify roles")
     const rolesArray = [...allowedRoles];
     console.log(req.roles);
     const result = req.roles

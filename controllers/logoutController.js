@@ -5,7 +5,7 @@ const path = require("path");
 const handleLogout = async (req, res) => {
   console.log('Inside handleLogout function');
   console.log("from logout controller0:", req.cookies);
-  console.log(req.headers)
+  console.log(req.cookies)
   const cookies = req.cookies;
 
   if (!cookies?.jwt) {return res.sendStatus(204); 

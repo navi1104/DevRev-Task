@@ -14,11 +14,11 @@ const getAllVaccinationCentres = async (req, res) => {
 
 const createNewVaccinationCentre = async (req, res) => {
   try {
-    if (!req?.body?.name || !req?.body?.role) {
-      return res.status(400).json({ message: "Name and Role are required fields, please fill them" });
+    if (!req?.body?.name || !req?.body?.area) {
+      return res.status(400).json({ message: "Name and Area are required fields, please fill them" });
     }
 
-    await VaccinationCentre.create({ name: req.body.name, role: req.body.role });
+    await VaccinationCentre.create({ name: req.body.name, area: req.body.area });
     res.sendStatus(200);
   } catch (error) {
     res.status(500).json({ message: "Failed to create new vaccination centre" });
@@ -37,7 +37,7 @@ const updateVaccinationCentre = async (req, res) => {
       vaccinationCentre.name = req.body.name;
     }
 
-    if (req?.body?.role) {
+    if (req?.body?.area) {
       vaccinationCentre.area = req.body.area;
     }
 
@@ -50,10 +50,11 @@ const updateVaccinationCentre = async (req, res) => {
 
 const deleteVaccinationCentre = async (req, res) => {
   try {
-    const vaccinationCentre = await VaccinationCentre.findOne({ _id: req.body.id });
+    console.log(`backend delete function: ${req.body.id}`)
+    const vaccinationCentre = await VaccinationCentre.findById(req.body.id);
     
     if (!vaccinationCentre) {
-      return res.status(404).json({ message: "VaccinationCentre not found" });
+      return res.status(404).json({ message: "Vaccination Centre not found" });
     }
     
     await vaccinationCentre.deleteOne();
@@ -62,6 +63,8 @@ const deleteVaccinationCentre = async (req, res) => {
     res.status(500).json({ message: "Failed to delete vaccination centre" });
   }
 };
+
+
 
 const bookSlot = async (req, res) => {
   try {
