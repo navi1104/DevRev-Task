@@ -56,7 +56,7 @@ const loginUser = async (req, res) => {
     });
 
     res.json({ accessToken });
-    localStorage.setItem({"uid":`${foundUser._id}`})
+    
     console.log("access token: ",accessToken)
   } else {
     return res.status(401);
