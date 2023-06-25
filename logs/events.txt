@@ -9014,3 +9014,5 @@ undefined  /vaccinationCentres - GET, Date: 20230625	22:42:26, id: 13df63b2-c983
 undefined  /favicon.ico - GET, Date: 20230625	22:42:26, id: e147a47b-f132-48d3-aeab-3753c60438d2
 undefined  /refresh - GET, Date: 20230625	22:43:16, id: b8ac4f5f-c45d-4811-bfa6-55d2113356ac
 undefined  /refresh - GET, Date: 20230625	22:44:06, id: e058c2c2-8c07-4e7a-8729-31e39870b0e1
+undefined  / - GET, Date: 20230625	23:07:07, id: 0cb6e2c3-9774-41a9-9320-d08787ecab16
+undefined  /favicon.ico - GET, Date: 20230625	23:07:07, id: fceab898-eefd-4462-bea7-0923f8e8c6c0
